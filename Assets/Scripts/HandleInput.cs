@@ -9,6 +9,7 @@ public class HandleInput {
     EventSystem eventSystem;
     BtnState btnState;
     public BtnState Buttons { get { return btnState; } }
+    public int TouchCount { get { return Input.touchCount; } }
     public HandleInput (GraphicRaycaster raycaster, EventSystem eventSystem) {
         this.raycaster = raycaster;
         this.eventSystem = eventSystem;
@@ -36,9 +37,9 @@ public class HandleInput {
                         break;
                 }
             }
-
         }
+        Debug.Log("L: "+btnState.LeftBtn.deltaTime+" M: "+btnState.MidBtn.deltaTime+" R: "+btnState.RightBtn.deltaTime);
+        //Debug.Log ("L:" + btnState.LeftBtn.phase + " M:" + btnState.MidBtn.phase + " R:" + btnState.RightBtn.phase);
         return btnState;
     }
 }
-

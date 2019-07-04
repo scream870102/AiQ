@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
     UIManager _UIManager;
     string currentScene;
     public UIManager UIManager { get { return _UIManager; } }
+    public GlobalData Data;
+    public float MusicTime { get; set; }
 
     [SerializeField]
     string InitScene;
