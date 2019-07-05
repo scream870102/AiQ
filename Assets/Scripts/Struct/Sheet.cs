@@ -72,7 +72,7 @@ public class GlobalData {
     public readonly Vector3 R_BTN_POS = new Vector3 (4.55f, 0f, 0f);
     public readonly Vector3 M_BTN_POS = new Vector3 (0f, 0f, 0f);
     public readonly Vector3 L_BTN_POS = new Vector3 (-4.55f, 0f, 0f);
-    public readonly float [ ] JUGE_TIME = { 0.033f, 0.055f, 0.077f, 0.099f, 0.1f };
+    public readonly float [ ] JUDGE_TIME = { 0.033f, 0.055f, 0.077f, 0.099f, 0.1f };
 }
 
-public enum EHitJuge { PERFECT, GREAT, GOOD, BAD, MISS };
+public enum EHitJudge { PERFECT, GREAT, GOOD, BAD, MISS };

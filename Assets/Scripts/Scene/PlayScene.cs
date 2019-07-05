@@ -45,23 +45,23 @@ public class PlayScene : Scene {
         GetDetectNote ( );
         if (input.TouchCount > 0) {
             if (btns.LeftBtn.phase != TouchPhase.Ended && btns.LeftBtn.deltaTime != 0f) {
-                if (Mathf.Abs (leftNote.Time - GameManager.Instance.MusicTime) <= GameManager.Instance.Data.JUGE_TIME [(int) EHitJuge.MISS]) {
-                    EHitJuge juge = JungeInput (leftNote.Time, leftNote.Type);
-                    Debug.Log ("L: " + juge.ToString ( ) + " MT: " + GameManager.Instance.MusicTime +" NT:" +leftNote.Time);
+                if (Mathf.Abs (leftNote.Time - GameManager.Instance.MusicTime) <= GameManager.Instance.Data.JUDGE_TIME [(int) EHitJudge.MISS]) {
+                    EHitJudge judge = JudgeInput (leftNote.Time, leftNote.Type);
+                    Debug.Log ("L: " + judge.ToString ( ) + " MT: " + GameManager.Instance.MusicTime +" NT:" +leftNote.Time);
                     leftNote = new NoteInfo (0f);
                 }
             }
             if (btns.MidBtn.phase != TouchPhase.Ended && btns.MidBtn.deltaTime != 0f) {
-                if (Mathf.Abs (midNote.Time - GameManager.Instance.MusicTime) <= GameManager.Instance.Data.JUGE_TIME [(int) EHitJuge.MISS]) {
-                    EHitJuge juge = JungeInput (midNote.Time, midNote.Type);
-                    Debug.Log ("M: " + juge.ToString ( )+ " MT: " + GameManager.Instance.MusicTime +" NT:" +midNote.Time);
+                if (Mathf.Abs (midNote.Time - GameManager.Instance.MusicTime) <= GameManager.Instance.Data.JUDGE_TIME [(int) EHitJudge.MISS]) {
+                    EHitJudge judge = JudgeInput (midNote.Time, midNote.Type);
+                    Debug.Log ("M: " + judge.ToString ( )+ " MT: " + GameManager.Instance.MusicTime +" NT:" +midNote.Time);
                     midNote = new NoteInfo (0f);
                 }
             }
             if (btns.RightBtn.phase != TouchPhase.Ended && btns.RightBtn.deltaTime != 0f) {
-                if (Mathf.Abs (rightNote.Time - GameManager.Instance.MusicTime) <= GameManager.Instance.Data.JUGE_TIME [(int) EHitJuge.MISS]) {
-                    EHitJuge juge = JungeInput (rightNote.Time, rightNote.Type);
-                    Debug.Log ("R: " + juge.ToString ( )+ " MT: " + GameManager.Instance.MusicTime +" NT:" +rightNote.Time);
+                if (Mathf.Abs (rightNote.Time - GameManager.Instance.MusicTime) <= GameManager.Instance.Data.JUDGE_TIME [(int) EHitJudge.MISS]) {
+                    EHitJudge judge = JudgeInput (rightNote.Time, rightNote.Type);
+                    Debug.Log ("R: " + judge.ToString ( )+ " MT: " + GameManager.Instance.MusicTime +" NT:" +rightNote.Time);
                     rightNote = new NoteInfo (0f);
 
                 }
@@ -109,18 +109,18 @@ public class PlayScene : Scene {
             midNote = midNotes.Dequeue ( );
     }
 
-    EHitJuge JungeInput (float time, ENoteType type) {
+    EHitJudge JudgeInput (float time, ENoteType type) {
         float offset = Mathf.Abs (time - GameManager.Instance.MusicTime);
-        if (offset < GameManager.Instance.Data.JUGE_TIME [(int) EHitJuge.PERFECT])
-            return EHitJuge.PERFECT;
-        else if (offset < GameManager.Instance.Data.JUGE_TIME [(int) EHitJuge.GREAT])
-            return EHitJuge.GREAT;
-        else if (offset < GameManager.Instance.Data.JUGE_TIME [(int) EHitJuge.GOOD])
-            return EHitJuge.GOOD;
-        else if (offset < GameManager.Instance.Data.JUGE_TIME [(int) EHitJuge.BAD])
-            return EHitJuge.BAD;
+        if (offset < GameManager.Instance.Data.JUDGE_TIME [(int) EHitJudge.PERFECT])
+            return EHitJudge.PERFECT;
+        else if (offset < GameManager.Instance.Data.JUDGE_TIME [(int) EHitJudge.GREAT])
+            return EHitJudge.GREAT;
+        else if (offset < GameManager.Instance.Data.JUDGE_TIME [(int) EHitJudge.GOOD])
+            return EHitJudge.GOOD;
+        else if (offset < GameManager.Instance.Data.JUDGE_TIME [(int) EHitJudge.BAD])
+            return EHitJudge.BAD;
         else
-            return EHitJuge.MISS;
+            return EHitJudge.MISS;
     }
 
     void RecycleNote (Note note) {
