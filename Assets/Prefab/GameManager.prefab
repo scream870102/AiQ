@@ -46,8 +46,7 @@ MonoBehaviour:
   Data:
     Sheets:
     - SheetName: DEFAULT
-      Data:
-        SheetInfo: {fileID: 4900000, guid: 1cbbf304a67c5ce44b1fdd6d5ac83555, type: 3}
-        Music: {fileID: 8300000, guid: 3daaf973af981f740bd1eb33f7120749, type: 3}
-        Cover: {fileID: 2800000, guid: cd5863e139b583a4590d229ca5f872ea, type: 3}
+      SheetInfo: {fileID: 4900000, guid: 1cbbf304a67c5ce44b1fdd6d5ac83555, type: 3}
+      Music: {fileID: 8300000, guid: 3daaf973af981f740bd1eb33f7120749, type: 3}
+      Cover: {fileID: 2800000, guid: cd5863e139b583a4590d229ca5f872ea, type: 3}
   InitScene: Play

@@ -38,7 +38,7 @@ public class HandleInput {
                 }
             }
         }
-        Debug.Log("L: "+btnState.LeftBtn.deltaTime+" M: "+btnState.MidBtn.deltaTime+" R: "+btnState.RightBtn.deltaTime);
+        //Debug.Log("L: "+btnState.LeftBtn.deltaTime+" M: "+btnState.MidBtn.deltaTime+" R: "+btnState.RightBtn.deltaTime);
         //Debug.Log ("L:" + btnState.LeftBtn.phase + " M:" + btnState.MidBtn.phase + " R:" + btnState.RightBtn.phase);
         return btnState;
     }

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -846,6 +846,12 @@ MonoBehaviour:
   sceneName: 
   raycaster: {fileID: 1126941608}
   eventSystem: {fileID: 667146708}
+  noteObjectPool:
+    pooledObject: {fileID: 3115985981589671036, guid: 440aebcaa5c72394880680d8222c6530,
+      type: 3}
+    poolParent: {fileID: 1361177144}
+    pooledAmount: 5
+    IsGrow: 0
   cover: {fileID: 176152914}
   aFx: {fileID: 697653796}
   data:
@@ -864,24 +870,6 @@ MonoBehaviour:
       BPM: 0
       Length: 0
     Notes: []
-  noteObjectPool:
-    pooledObject: {fileID: 3115985981589671036, guid: 440aebcaa5c72394880680d8222c6530,
-      type: 3}
-    poolParent: {fileID: 1361177144}
-    pooledAmount: 5
-    IsGrow: 0
-  leftNote:
-    Time: 0
-    Type: 0
-    Pos: 0
-  midNote:
-    Time: 0
-    Type: 0
-    Pos: 0
-  rightNote:
-    Time: 0
-    Type: 0
-    Pos: 0
 --- !u!4 &697653795
 Transform:
   m_ObjectHideFlags: 0
@@ -1545,46 +1533,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 506994005095840424, guid: 938671f481971c6498b029fbad5984bf,
-        type: 3}
-      propertyPath: Data.Sheets.Array.data[0].Cover
-      value: 
-      objectReference: {fileID: 2800000, guid: cd5863e139b583a4590d229ca5f872ea, type: 3}
-    - target: {fileID: 506994005095840424, guid: 938671f481971c6498b029fbad5984bf,
-        type: 3}
-      propertyPath: Data.Sheets.Array.data[0].Music
-      value: 
-      objectReference: {fileID: 8300000, guid: 3daaf973af981f740bd1eb33f7120749, type: 3}
-    - target: {fileID: 506994005095840424, guid: 938671f481971c6498b029fbad5984bf,
-        type: 3}
-      propertyPath: Data.Sheets.Array.data[0].SheetInfo
-      value: 
-      objectReference: {fileID: 4900000, guid: 1cbbf304a67c5ce44b1fdd6d5ac83555, type: 3}
-    - target: {fileID: 506994005095840424, guid: 938671f481971c6498b029fbad5984bf,
-        type: 3}
-      propertyPath: Data.RightBtnPos.x
-      value: 4.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 506994005095840424, guid: 938671f481971c6498b029fbad5984bf,
-        type: 3}
-      propertyPath: Data.LeftBtnPos.x
-      value: -4.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 506994005095840424, guid: 938671f481971c6498b029fbad5984bf,
-        type: 3}
-      propertyPath: Data.MoveDirection.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 506994005095840424, guid: 938671f481971c6498b029fbad5984bf,
-        type: 3}
-      propertyPath: Data.MoveDirection.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 506994005095840424, guid: 938671f481971c6498b029fbad5984bf,
-        type: 3}
-      propertyPath: Data.Speed
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938671f481971c6498b029fbad5984bf, type: 3}

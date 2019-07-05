@@ -18,30 +18,23 @@ public class Note : MonoBehaviour, IObjectPoolItem {
     }
     public void SetData (NoteInfo info) {
         this.info = info;
-        switch (info.Pos) {
-            case EnotePos.L:
-                initPos = GameManager.Instance.Data.L_BTN_POS;
-                break;
-            case EnotePos.R:
-                initPos = GameManager.Instance.Data.R_BTN_POS;
-                break;
-            case EnotePos.M:
-                initPos = GameManager.Instance.Data.M_BTN_POS;
-                break;
-
-        }
+        initPos = GameManager.Instance.Data.BTN_POS [(int) info.Pos];
         transform.position = initPos + GameManager.Instance.Data.MOVE_DIRECTION * GameManager.Instance.Data.SPEED * (info.Time - GameManager.Instance.MusicTime);
     }
 
     public void Init ( ) {
         transform.position = Vector3.zero;
     }
-    private void Update ( ) {
+
+    public void Tick ( ) {
         transform.position = initPos + GameManager.Instance.Data.MOVE_DIRECTION * GameManager.Instance.Data.SPEED * (info.Time - GameManager.Instance.MusicTime);
         if (GameManager.Instance.MusicTime > info.Time) {
             Recycle ( );
         }
+    }
 
+    public void Judge(){
+        
     }
 
 }
