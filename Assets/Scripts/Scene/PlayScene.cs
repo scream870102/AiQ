@@ -12,17 +12,27 @@ public class PlayScene : Scene {
     [SerializeField]
     ObjectPool noteObjectPool;
     HandleInput input;
-    BtnState btns;
+    [SerializeField]
+    Touch [ ] btns = new Touch [3];
     public RawImage cover;
     public AudioSource aFx;
     public SheetData data;
     public SheetInfo sheet;
     Queue<NoteInfo> queueNotes;
     Queue<Note> [ ] sceneNotes = { new Queue<Note> ( ), new Queue<Note> ( ), new Queue<Note> ( ) };
-    Note [ ] detectNotes = { null, null, null };
+    Note [ ] detectNotes = new Note [3];
+    [SerializeField]
+    float score;
+    [SerializeField]
+    bool bComboing;
+    [SerializeField]
+    int combo;
 
     // Start is called before the first frame update
     void Start ( ) {
+        score = 0f;
+        bComboing = false;
+        combo = 0;
         input = new HandleInput (raycaster, eventSystem);
         noteObjectPool.Init ( );
         SetUIAndGetSheet ("DEFAULT");
@@ -79,12 +89,25 @@ public class PlayScene : Scene {
 
     void JudgeInput ( ) {
         foreach (Note note in detectNotes) {
-            if (note) note.Judge ( );
+            if (note) note.Judge (btns [(int) note.Info.Pos]);
         }
     }
-    void RecycleNote (Note note) {
+    void RecycleNote (Note note, EHitJudge result) {
         note.OnRecycle -= RecycleNote;
         detectNotes [(int) note.Info.Pos] = null;
+        CountPoint (result);
+    }
+
+    void CountPoint (EHitJudge result) {
+        score += GameManager.Instance.Data.JUDGE_POINT [(int) result];
+        if (result == EHitJudge.PERFECT || result == EHitJudge.GREAT) {
+            bComboing = true;
+            combo++;
+        }
+        else {
+            bComboing = false;
+            combo = 0;
+        }
     }
 
 }

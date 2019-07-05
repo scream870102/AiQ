@@ -19,7 +19,7 @@
 		"scope": "csharp",
 		"prefix": "ci",
 		"body": [
-			"(int)$1",
+			"(int)",
 		],
 		"description": "convert variable to int type"
 	}

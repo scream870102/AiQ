@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
+/// <summary>The main purpose of SourceLoader is to load&save all the source you will need in AiQ</summary>
 public class SourceLoader : MonoBehaviour {
     #region WEBREQUSET
     public AudioClip GetAudio (string path) {
@@ -27,7 +28,7 @@ public class SourceLoader : MonoBehaviour {
 
     public Texture2D GetCover (string path) {
         Texture2D tex = null;
-        StartCoroutine (path, tex);
+        StartCoroutine (GetTexture(path, tex));
         return tex;
     }
     IEnumerator GetTexture (string path, Texture2D tex) {
@@ -92,7 +93,7 @@ public class SourceLoader : MonoBehaviour {
         for (int i = 0; i < 15; i++) {
             NoteInfo note;
             note.Time = i + 1;
-            note.Pos = (EnotePos) (i % 3);
+            note.Pos = (ENotePos) (i % 3);
             note.Type = (ENoteType) (i % 10);
             sheet.Notes.Add (note);
         }
@@ -100,6 +101,9 @@ public class SourceLoader : MonoBehaviour {
 
     }
     #endregion TEST
+    /// <summary>Call this method to get the sheet</summary>
+    /// <remarks>include audioClip/TextAsset/Texture2D</remarks>
+    /// <param name="name">the sheet you want to get</param>
     public static SheetData GetSheetData (string name) {
         SheetData data = new SheetData ( );
         foreach (SheetData sheet in GameManager.Instance.Data.Sheets) {
@@ -110,6 +114,9 @@ public class SourceLoader : MonoBehaviour {
         }
         return data;
     }
+    /// <summary>Call this method to get the sheet data</summary>
+    /// <remarks>Convert the TextAsset from json file to class SheetInfo</remarks>
+    /// <param name="textAsset">the json file you want to convert</param>
     public static SheetInfo GetSheet (TextAsset textAsset) {
         string content = textAsset.text;
         SheetInfo sheet = JsonUtility.FromJson<SheetInfo> (content);

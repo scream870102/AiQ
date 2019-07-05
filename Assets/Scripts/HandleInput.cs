@@ -7,15 +7,15 @@ using UnityEngine.UI;
 public class HandleInput {
     GraphicRaycaster raycaster;
     EventSystem eventSystem;
-    BtnState btnState;
-    public BtnState Buttons { get { return btnState; } }
+    Touch [ ] btnStates = { new Touch ( ), new Touch ( ), new Touch ( ) };
+    public Touch [ ] Buttons { get { return btnStates; } }
     public int TouchCount { get { return Input.touchCount; } }
     public HandleInput (GraphicRaycaster raycaster, EventSystem eventSystem) {
         this.raycaster = raycaster;
         this.eventSystem = eventSystem;
     }
 
-    public BtnState HandlInput ( ) {
+    public Touch [ ] HandlInput ( ) {
         foreach (Touch touch in Input.touches) {
             PointerEventData pointerEventData = new PointerEventData (eventSystem);
             pointerEventData.position = touch.position;
@@ -27,19 +27,17 @@ public class HandleInput {
             foreach (RaycastResult result in results) {
                 switch (result.gameObject.name) {
                     case "LeftBtn":
-                        btnState.LeftBtn = touch;
+                        btnStates [(int) ENotePos.L] = touch;
                         break;
                     case "MidBtn":
-                        btnState.MidBtn = touch;
+                        btnStates [(int) ENotePos.M] = touch;
                         break;
                     case "RightBtn":
-                        btnState.RightBtn = touch;
+                        btnStates [(int) ENotePos.R] = touch;
                         break;
                 }
             }
         }
-        //Debug.Log("L: "+btnState.LeftBtn.deltaTime+" M: "+btnState.MidBtn.deltaTime+" R: "+btnState.RightBtn.deltaTime);
-        //Debug.Log ("L:" + btnState.LeftBtn.phase + " M:" + btnState.MidBtn.phase + " R:" + btnState.RightBtn.phase);
-        return btnState;
+        return btnStates;
     }
 }

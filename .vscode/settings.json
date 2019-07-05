@@ -80,5 +80,11 @@
         "menubar.selectionForeground": "#2979FF",
         "editor.findMatchBorder": "#2979FF",
         "selection.background": "#2979FF40"
-    }
+    },
+    "cSpell.words": [
+        "destroy",
+        "dont",
+        "load",
+        "on"
+    ]
 }
